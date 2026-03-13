@@ -1,56 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Página Inicial</title>
-  <link rel="stylesheet" href="css/menu.css">
+<meta charset="UTF-8">
+<title>Página Inicial</title>
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/neon.css">
 </head>
+
 <body>
 
 <script>
-// Redireciona para login se não estiver logado
+
 if (!localStorage.getItem('isLoggedIn')) {
   window.location.href = "login.html";
 }
 </script>
 
+
 <div class="navigation">
   <ul>
+
     <li class="list active">
       <a href="#">
-        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+        <span class="icon">
+          <ion-icon name="home-outline"></ion-icon>
+        </span>
         <span class="text">Home</span>
       </a>
     </li>
+
     <li class="list">
       <a href="#">
-        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+        <span class="icon">
+          <ion-icon name="person-outline"></ion-icon>
+        </span>
         <span class="text">Profile</span>
       </a>
     </li>
+
     <li class="list">
       <a href="#">
-        <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
+        <span class="icon">
+          <ion-icon name="chatbubble-outline"></ion-icon>
+        </span>
         <span class="text">Message</span>
       </a>
     </li>
+
     <li class="list">
       <a href="#">
-        <span class="icon"><ion-icon name="image-outline"></ion-icon></span>
+        <span class="icon">
+          <ion-icon name="image-outline"></ion-icon>
+        </span>
         <span class="text">Photos</span>
       </a>
     </li>
+
     <li class="list">
       <a href="#">
-        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+        <span class="icon">
+          <ion-icon name="settings-outline"></ion-icon>
+        </span>
         <span class="text">Settings</span>
       </a>
     </li>
+
     <div class="indicator"></div>
+
   </ul>
 </div>
 
-<div style="text-align:center; margin-top:20px;">
+
+<div style="text-align:center; margin-top:140px;">
   <button id="logoutBtn">Sair</button>
 </div>
 
@@ -58,16 +80,18 @@ if (!localStorage.getItem('isLoggedIn')) {
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 <script>
-// Menu ativo
 const list = document.querySelectorAll('.list');
-function activeLink() {
+
+function activeLink(){
   list.forEach(item => item.classList.remove('active'));
   this.classList.add('active');
 }
+
 list.forEach(item => item.addEventListener('click', activeLink));
 
-// Logout
+
 const logoutBtn = document.getElementById('logoutBtn');
+
 logoutBtn.addEventListener('click', () => {
   localStorage.removeItem('isLoggedIn');
   window.location.href = 'login.html';

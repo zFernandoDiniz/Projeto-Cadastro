@@ -1,149 +1,223 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background: url('../images/camaleao.jpg') no-repeat;
-  background-size: cover;
-  background-position: center;
-  animation: animateBg 5s linear infinite;
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+background:#252432;
 }
 
-@keyframes animateBg {
-  100% {
-    filter: hue-rotate(360deg);
-  }
+@keyframes animateBg{
+100%{
+filter:hue-rotate(360deg);
+}
 }
 
-.login-box {
-  position: relative;
-  width: 400px;
-  height: 450px;
-  background: transparent;
-  border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, .5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(15px);
+/* ANIMAÇÃO NEON */
+
+@property --a{
+syntax:"<angle>";
+inherits:false;
+initial-value:0deg;
 }
 
-h2 {
-  font-size: 2em;
-  color: #fff;
-  text-align: center;
+.login-box{
+position:relative;
+width:400px;
+height:450px;
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+transition:.5s;
+
+background:repeating-conic-gradient(
+from var(--a),
+#ff2770 0%,
+#ff2770 5%,
+transparent 5%,
+transparent 40%,
+#ff2770 50%
+);
+
+animation:rotating 4s linear infinite;
+filter:drop-shadow(0 15px 50px #000);
 }
 
-.input-box {
-  position: relative;
-  width: 310px;
-  margin: 30px 0;
-  border-bottom: 1px solid #fff;
+.login-box:hover{
+width:430px;
+height:520px;
 }
 
-.input-box label {
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-  font-size: 1em;
-  color: #fff;
-  pointer-events: none;
-  transition: .5s;
+@keyframes rotating{
+0%{
+--a:0deg;
+}
+100%{
+--a:360deg;
+}
+}
+
+.login-box::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+border-radius:20px;
+
+background:repeating-conic-gradient(
+from var(--a),
+#45f3ff 0%,
+#45f3ff 5%,
+transparent 5%,
+transparent 40%,
+#45f3ff 50%
+);
+
+animation:rotating 4s linear infinite;
+animation-delay:-1s;
+}
+
+.login-box::after{
+content:"";
+position:absolute;
+inset:4px;
+background:rgba(0,0,0,0.55);
+border-radius:15px;
+backdrop-filter:blur(15px);
+}
+
+/* FORMULÁRIO */
+
+form{
+position:relative;
+z-index:10;
+}
+
+h2{
+font-size:2em;
+color:#fff;
+text-align:center;
+}
+
+.input-box{
+position:relative;
+width:310px;
+margin:30px 0;
+border-bottom:1px solid #fff;
+}
+
+.input-box label{
+position:absolute;
+top:50%;
+left:5px;
+transform:translateY(-50%);
+font-size:1em;
+color:#fff;
+pointer-events:none;
+transition:.5s;
 }
 
 .input-box input:focus~label,
-.input-box input:valid~label {
-  top: -5px;
+.input-box input:valid~label{
+top:-5px;
 }
 
-.input-box input {
-  width: 100%;
-  height: 50px;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  color: #fff;
-  padding: 0 35px 0 5px;
+.input-box input{
+width:100%;
+height:50px;
+background:transparent;
+border:none;
+outline:none;
+font-size:1em;
+color:#fff;
+padding:0 35px 0 5px;
 }
 
-.input-box .icon {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  color: #fff;
-  transform: translateY(-50%);
+.input-box .icon{
+position:absolute;
+right:8px;
+top:50%;
+color:#fff;
+transform:translateY(-50%);
 }
 
-.remember-forgot {
-  margin: -15px 0 15px;
-  font-size: .9em;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
+.remember-forgot{
+margin:-15px 0 15px;
+font-size:.9em;
+color:#fff;
+display:flex;
+justify-content:space-between;
 }
 
-.remember-forgot label input {
-  margin-right: 3px;
+.remember-forgot label input{
+margin-right:3px;
 }
 
-.remember-forgot a {
-  color: #fff;
-  text-decoration: none;
+.remember-forgot a{
+color:#fff;
+text-decoration:none;
 }
 
-.remember-forgot a:hover {
-  text-decoration: underline;
+.remember-forgot a:hover{
+text-decoration:underline;
 }
 
-button {
-  width: 100%;
-  height: 40px;
-  background-color: #fff;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 1em;
-  color: #000;
-  font-weight: 500;
-}
-.register-link {
-  font-size: .9em;
-  color: #fff;
-  text-align: center;
-  margin: 25px 0 10px;
+button{
+width:100%;
+height:40px;
+background:#45f3ff;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:1em;
+color:#111;
+font-weight:600;
+transition:.5s;
 }
 
-.register-link p a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+button:hover{
+box-shadow:0 0 10px #45f3ff,0 0 40px #45f3ff;
 }
 
-.register-link p a:hover {
-  text-decoration: underline;
+.register-link{
+font-size:.9em;
+color:#fff;
+text-align:center;
+margin:25px 0 10px;
 }
 
-@media (max-width:500px) {
-  .login-box {
-    width: 100%;
-    height: 100vh;
-    border: none;
-    border-radius: 0;
-  }
+.register-link p a{
+color:#fff;
+text-decoration:none;
+font-weight:600;
+}
 
-  .input-box {
-    width: 290px;
-  }
+.register-link p a:hover{
+text-decoration:underline;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:500px){
+
+.login-box{
+width:100%;
+height:100vh;
+border:none;
+border-radius:0;
+}
+
+.input-box{
+width:290px;
+}
+
 }
